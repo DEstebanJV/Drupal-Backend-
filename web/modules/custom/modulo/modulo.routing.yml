@@ -1,0 +1,7 @@
+modulo.biblioteca:
+  path: '/biblioteca'
+  defaults:
+    _controller: '\Drupal\modulo\Controller\BibliotecaController::mostrarLibros'
+    _title: 'Biblioteca de Libros'
+  requirements:
+    _permission: 'access content'
