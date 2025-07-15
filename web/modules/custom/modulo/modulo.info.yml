@@ -1,0 +1,5 @@
+name: 'modulo'
+type: module
+description: 'Modulo Custom base para estudio de controladores y servicios'
+package: Custom
+core_version_requirement: ^10 || ^11

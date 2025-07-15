@@ -1,0 +1,6 @@
+name: 'Anytown'
+type: module
+description: 'Custom Code for anytown course'
+package: Custom
+core_version_requirement: ^10 || ^11
+

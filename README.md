@@ -9,57 +9,13 @@ Features:
 - Using the [default](.docksal/docksal.env#L9) Docksal LAMP stack with [image version pinning](.docksal/docksal.env#L13-L15)
 - PHP and MySQL settings overrides [examples](.docksal/etc)
 
-## Setup instructions
+## Rutas Backend Drupal
 
-### Step #1: Docksal environment setup
+- Modulos 
 
-**This is a one time setup - skip this if you already have a working Docksal environment.**
+Los módulos interactúan con el software Drupal mediante cuatro patrones principales: plugins , servicios , eventos y ganchos . Como desarrollador, estos son los patrones que necesitarás aprender a implementar y aplicar para crear módulos personalizados.
 
-Follow [Docksal environment setup instructions](https://docs.docksal.io/getting-started/setup/)
-
-### Step #2: Project setup
-
-1. Clone this repo into your Projects directory
-
-    ```
-    git clone https://github.com/docksal/boilerplate-drupal10-composer.git drupal10
-    cd drupal10
-    ```
-
-2. Initialize the site
-
-   This will initialize local settings and install the site via drush
-
-    ```
-    fin init
-    ```
-   A `composer.lock` file will be generated. This file should be committed to your repository.
-
-3. Point your browser to
-
-    ```
-    http://drupal10.docksal.site
-    ```
-
-When the automated install is complete, the command line output will display the admin username and password.
-
-
-## More automation with 'fin init'
-
-Site provisioning can be automated using `fin init`, which calls the shell script in [.docksal/commands/init](.docksal/commands/init).
-This script is meant to be modified per project. The one in this repo will give you a good starting example.
-
-Some common tasks that can be handled by the init script (and other [custom commands](https://docs.docksal.io/fin/custom-commands/)):
-
-- initialize local settings files for Docker Compose, Drupal, Behat, etc.
-- import DB or perform a site install
-- compile Sass
-- run DB updates, revert features, clear caches, etc.
-- enable/disable modules, update variables values
-
-
-## Security notice
-
-This repo is intended for quick start demos and includes a hardcoded value for `hash_salt` in `settings.php`.
-If you are basing your project code base on this repo, make sure you regenerate and update the `hash_salt` value.
-A new value can be generated with `drush ev '$hash = Drupal\Component\Utility\Crypt::randomBytesBase64(55); print $hash . "\n";'`
+Plugins : Son como las piezas individuales que se utilizan para ensamblar una máquina. Ofrecen nuevas funciones que permiten al administrador de Drupal elegir una opción entre varias. Por ejemplo, elegir bloques o tipos de campos específicos al crear un sitio web lo hace único.
+Servicios : Piense en los servicios como herramientas especializadas que se pueden intercambiar. Se encargan de tareas específicas, como enviar correos electrónicos o integrarse con bases de datos. Puede que tenga un cajón lleno de herramientas y que funcionen igual, pero usted elige la adecuada según el trabajo.
+Eventos : son como disparadores que reaccionan a ciertas acciones o condiciones dentro de Drupal, como la validación de entidades o el enrutamiento dinámico.
+Ganchos : los ganchos son como puntos de conexión personalizables en Drupal donde puedes "enganchar" tu propio código para alterar el comportamiento o ampliar la funcionalidad.
