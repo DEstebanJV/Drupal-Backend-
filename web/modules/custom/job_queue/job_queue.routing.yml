@@ -1,7 +1,15 @@
-job_queue.enqueue:
-  path: '/job-queue/enqueue'
+job_queue.enqueue_multiple:
+  path: '/job-queue/enqueue-50'
   defaults:
-    _controller: '\Drupal\job_queue\Controller\JobQueueController::enqueueJob'
-    _title: 'Agregar trabajo a la cola'
+    _controller: '\Drupal\job_queue\Controller\JobQueueController::enqueueMultiple'
+    _title: 'Agregar 50 trabajos a la cola'
+  requirements:
+    _permission: 'access content'
+
+job_queue.queue_count:
+  path: '/job-queue/queue-count'
+  defaults:
+    _controller: '\Drupal\job_queue\Controller\JobQueueController::showQueueCount'
+    _title: 'Contador de trabajos en la cola'
   requirements:
     _permission: 'access content'
