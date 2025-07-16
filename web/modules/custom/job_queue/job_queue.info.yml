@@ -1,0 +1,5 @@
+name: 'job queue'
+type: module
+description: 'Permite manejar tareas pesadas lentas o programadas de forma asincrona colocandolas en una cola para ser procesadas por un trabajador en segundo plano'
+package: Custom
+core_version_requirement: ^10 || ^11
