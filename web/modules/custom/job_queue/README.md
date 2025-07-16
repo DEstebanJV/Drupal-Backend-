@@ -29,7 +29,7 @@ Este módulo demuestra cómo utilizar el sistema de colas (`Queue API`) de Drupa
 
 ### 1. **Agregar un trabajo a la cola**
 
-Cuando se accede a `/job-queue/enqueue`, se ejecuta:
+Cuando se accede a `/job-queue/enqueue-50`, se ejecuta:
 
 ```php
 $queue->createItem([
@@ -40,6 +40,15 @@ $queue->createItem([
 ]);
 ```
 ---
+
+## Verifica la cantidad de trabajos pendientes
+
+Cuando se accede a `/job-queue/queue-count`, se ejecuta:
+
+```php
+$queue = $this->queueFactory->get('job_queue_example');
+$count = $queue->numberOfItems();
+```
 
 ## Ejecutar toda la cola 
 
