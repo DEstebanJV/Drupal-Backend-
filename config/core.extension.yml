@@ -30,6 +30,7 @@ module:
   help: 0
   history: 0
   image: 0
+  job_queue: 0
   jsonapi: 0
   language: 0
   layout_builder: 0
