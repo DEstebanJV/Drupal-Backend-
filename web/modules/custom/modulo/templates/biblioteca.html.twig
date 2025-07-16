@@ -1,0 +1,9 @@
+<h2> Lista de libros </h2>
+
+<ul>
+  {% for libro in libros %}
+    <li>
+      {{ libro.titulo }} {{ libro.autor }} {{ libro.año }}
+    </li>
+  {% endfor %}
+</ul>

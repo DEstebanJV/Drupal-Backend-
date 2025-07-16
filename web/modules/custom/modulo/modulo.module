@@ -4,3 +4,17 @@
  * @file
  * Primary module hooks for modulo module.
  */
+
+/**
+ * Implementa hook_theme().
+ */
+function modulo_theme($existing, $type, $theme, $path) {
+  return [
+    'biblioteca' => [
+      'variables' => [
+        'libros' => [],
+      ],
+      'template' => 'biblioteca',
+    ],
+  ];
+}
