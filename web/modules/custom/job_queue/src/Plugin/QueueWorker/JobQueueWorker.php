@@ -14,9 +14,15 @@ use Drupal\Core\Queue\QueueWorkerBase;
 class JobQueueWorker extends QueueWorkerBase {
 
   public function processItem($data) {
-    \Drupal::logger('job_queue')->notice('Procesando trabajo: @message a las @time', [
-      '@message' => $data['message'],
-      '@time' => date('H:i:s', $data['time']),
-    ]);
+    \Drupal::logger('job_queue')->notice(
+      'Procesando trabajo para el usuario @uid (@username) a las @time. Mensaje: @message',
+      [
+        '@uid' => $data['uid'],
+        '@username' => $data['username'],
+        '@time' => date('H:i:s', $data['time']),
+        '@message' => $data['message'],
+      ]
+    );
   }
 }
+
