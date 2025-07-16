@@ -1,0 +1,7 @@
+job_queue.enqueue:
+  path: '/job-queue/enqueue'
+  defaults:
+    _controller: '\Drupal\job_queue\Controller\JobQueueController::enqueueJob'
+    _title: 'Agregar trabajo a la cola'
+  requirements:
+    _permission: 'access content'
