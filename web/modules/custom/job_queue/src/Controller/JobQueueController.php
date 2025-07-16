@@ -19,19 +19,13 @@ class JobQueueController extends ControllerBase {
    */
   protected QueueFactory $queueFactory;
 
-  /**
-   * Usuario actual.
-   *
-   * @var \Drupal\Core\Session\AccountInterface
-   */
-  protected AccountInterface $currentUser;
+
 
   /**
    * Constructor del controlador.
    */
-  public function __construct(QueueFactory $queue_factory, AccountInterface $current_user) {
+  public function __construct(QueueFactory $queue_factory) {
     $this->queueFactory = $queue_factory;
-    $this->currentUser = $current_user;
   }
 
   /**
@@ -39,8 +33,8 @@ class JobQueueController extends ControllerBase {
    */
   public static function create(ContainerInterface $container): self {
     return new static(
-      $container->get('queue'),
-      $container->get('current_user')
+      $container->get('queue')
+
     );
   }
 
@@ -48,11 +42,11 @@ class JobQueueController extends ControllerBase {
    * Agrega 50 trabajos a la cola.
    */
   public function enqueueMultiple(): array {
-    $uid = $this->currentUser->id();
-    $username = $this->currentUser->getDisplayName();
+    $uid = $this->currentUser()->id();
+    $username = $this->currentUser()->getDisplayName();
     $queue = $this->queueFactory->get('job_queue_example');
 
-    for ($i = 1; $i <= 50; $i++) {
+    for ($i = 1; $i <= 500; $i++) {
       $queue->createItem([
         'uid' => $uid,
         'username' => $username,

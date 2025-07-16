@@ -38,3 +38,11 @@ $queue->createItem([
   'time' => time(),
   'message' => 'Trabajo generado por el usuario actual',
 ]);
+```
+---
+
+## Ejecutar toda la cola 
+
+```bash
+drush queue-run job_queue_example
+```

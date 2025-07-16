@@ -3,19 +3,19 @@
 namespace Drupal\job_queue\Plugin\QueueWorker;
 
 use Drupal\Core\Queue\QueueWorkerBase;
-use Drupal\Core\Queue\QueueInterface;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 
 /**
  * @QueueWorker(
  *   id = "job_queue_example",
  *   title = @Translation("Job Queue Example Worker"),
- *   cron = {"time" = 30}
+ *   cron = {"time" = 1}
  * )
  */
-class JobQueueWorker extends QueueWorkerBase {
+class JobQueueWorker extends QueueWorkerBase implements ContainerFactoryPluginInterface {
 
   /**
    * Logger de Drupal.
@@ -32,20 +32,31 @@ class JobQueueWorker extends QueueWorkerBase {
   protected $database;
 
   /**
+   * Constructor.
+   */
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, LoggerChannelFactoryInterface $logger_factory, Connection $database) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->logger = $logger_factory->get('job_queue');
+    $this->database = $database;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    $instance = new static($configuration, $plugin_id, $plugin_definition);
-    $instance->logger = $container->get('logger.factory')->get('job_queue');
-    $instance->database = $container->get('database');
-    return $instance;
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('logger.factory'),
+      $container->get('database')
+    );
   }
 
   /**
    * Procesa cada ítem encolado.
    */
   public function processItem($data) {
-    // Log individual por ítem.
     $this->logger->notice('Procesando trabajo #@index del usuario @username (uid: @uid). Mensaje: @msg', [
       '@index' => $data['index'],
       '@username' => $data['username'],
@@ -53,9 +64,8 @@ class JobQueueWorker extends QueueWorkerBase {
       '@msg' => $data['message'],
     ]);
 
-    // Al final del proceso, verificamos si quedan trabajos.
     $remaining = $this->getRemainingItemsCount();
-    $this->logger->info('Quedan @count trabajos pendientes en la cola.', [
+    $this->logger->notice('Quedan @count trabajos pendientes en la cola.', [
       '@count' => $remaining,
     ]);
   }
