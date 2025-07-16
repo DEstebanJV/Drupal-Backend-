@@ -1,30 +1,40 @@
-## INTRODUCTION
+# Job Queue - Módulo de ejemplo para uso de colas en Drupal
 
-The job queue module is a DESCRIBE_THE_MODULE_HERE.
+Este módulo demuestra cómo utilizar el sistema de colas (`Queue API`) de Drupal para encolar y procesar trabajos de manera asincrónica mediante el plugin `CronQueueWorker`.
 
-The primary use case for this module is:
+---
 
-- Use case #1
-- Use case #2
-- Use case #3
+## ✨ ¿Qué hace este módulo?
 
-## REQUIREMENTS
+- Encola un trabajo cuando un usuario accede a la ruta `/job-queue/enqueue`.
+- El trabajo contiene:
+  - El ID del usuario actual (`uid`)
+  - El nombre del usuario
+  - Un mensaje
+  - La hora en que se encoló
+- El trabajo se procesa cuando se ejecuta `cron` (manual o automáticamente).
+- Una vez procesado, el trabajo se elimina automáticamente de la cola.
 
-DESCRIBE_MODULE_DEPENDENCIES_HERE
+---
 
-## INSTALLATION
+## 🧩 Componentes principales
 
-Install as you would normally install a contributed Drupal module.
-See: https://www.drupal.org/node/895232 for further information.
+- `JobQueueController`: Controlador que agrega trabajos a la cola (`createItem()`).
+- `JobQueueWorker`: Plugin `QueueWorker` que define la lógica para procesar los ítems.
+- Ruta: `/job-queue/enqueue`
 
-## CONFIGURATION
-- Configuration step #1
-- Configuration step #2
-- Configuration step #3
+---
 
-## MAINTAINERS
+## ⚙️ ¿Cómo funciona la cola?
 
-Current maintainers for Drupal 10:
+### 1. **Agregar un trabajo a la cola**
 
-- FIRST_NAME LAST_NAME (NICKNAME) - https://www.drupal.org/u/NICKNAME
+Cuando se accede a `/job-queue/enqueue`, se ejecuta:
 
+```php
+$queue->createItem([
+  'uid' => $uid,
+  'username' => $username,
+  'time' => time(),
+  'message' => 'Trabajo generado por el usuario actual',
+]);
