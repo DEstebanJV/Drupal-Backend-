@@ -43,7 +43,7 @@ class JobQueueController extends ControllerBase {
       'uid' => $uid,
       'username' => $username,
       'time' => time(),
-      'message' => 'Trabajo generado por el usuario actual segunda prueba',
+      'message' => 'Trabajo generado por el usuario actual cuarta prueba',
     ]);
 
     return [
