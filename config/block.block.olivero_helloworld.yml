@@ -1,0 +1,20 @@
+uuid: 13086307-cc16-42bf-8aeb-21d269d82752
+langcode: en
+status: true
+dependencies:
+  module:
+    - anytown
+  theme:
+    - olivero
+id: olivero_helloworld
+theme: olivero
+region: highlighted
+weight: -7
+provider: null
+plugin: anytown_hello_world
+settings:
+  id: anytown_hello_world
+  label: 'Hello World'
+  label_display: '0'
+  provider: anytown
+visibility: {  }

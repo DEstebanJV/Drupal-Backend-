@@ -1,0 +1,6 @@
+live_clock:
+  version: 1.x
+  js:
+    js/live_clock.js: {}
+  dependencies:
+    - core/drupal
