@@ -775,9 +775,11 @@ display:
             comment_bulk_form: comment_bulk_form
             subject: subject
             uid: uid
+            name: name
             entity_id: entity_id
             changed: changed
             operations: operations
+            name_1: name_1
           default: changed
           info:
             comment_bulk_form:
@@ -799,8 +801,15 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            entity_id:
+            name:
               sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            entity_id:
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
@@ -814,6 +823,11 @@ display:
               empty_column: false
               responsive: priority-low
             operations:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            name_1:
               sortable: false
               default_sort_order: asc
               align: ''

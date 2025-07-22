@@ -1,0 +1,5 @@
+_core:
+  default_config_hash: Y3Kz_IX6enns4LFShOd5LrAUpBALGnwl9SDenq7s5QU
+id: main_custom_page
+label: 'Main Custom Page'
+body: '<p> Bienvenido a la página principal de la web. Creada con Drupal 10/11. </p>'

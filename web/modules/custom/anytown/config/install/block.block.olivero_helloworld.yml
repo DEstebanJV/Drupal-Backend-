@@ -6,8 +6,6 @@ dependencies:
     - anytown
   theme:
     - olivero
-_core:
-  default_config_hash: aW_LLiwkqlIzYQ7urccMzNOwv9Ggb3T8ltICnJ6HLG8
 id: olivero_helloworld
 theme: olivero
 region: highlighted
