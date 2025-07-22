@@ -1,0 +1,3 @@
+view weekly weather:
+  title: 'View Weekly weather'
+  description: 'Permite a los usuarios ver la pagina del clima'
