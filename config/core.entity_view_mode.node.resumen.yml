@@ -1,0 +1,11 @@
+uuid: be76afed-a04b-426c-ae4c-769a3e326e28
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.resumen
+label: Resumen
+description: 'Formato resumen de contenido'
+targetEntityType: node
+cache: true
