@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\anytown\Controller;
 
-use Drupal\anytown\ForecastClientInterface;
+use Drupal\anytown\Interfaces\ForecastClientInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -16,14 +16,14 @@ class WeatherPage extends ControllerBase {
   /**
    * Forecast API client.
    *
-   * @var \Drupal\anytown\ForecastClientInterface
+   * @var \Drupal\anytown\Interfaces\ForecastClientInterface
    */
   private $forecastClient;
 
   /**
    * WeatherPage controller constructor.
    *
-   * @param \Drupal\anytown\ForecastClientInterface $forecast_client
+   * @param \Drupal\anytown\Interfaces\ForecastClientInterface $forecast_client
    *   Forecast API client service.
    */
   public function __construct(ForecastClientInterface $forecast_client) {
@@ -73,5 +73,4 @@ class WeatherPage extends ControllerBase {
       '#markup' => $output,
     ];
   }
-
 }

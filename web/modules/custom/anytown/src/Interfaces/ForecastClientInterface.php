@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Drupal\anytown;
+namespace Drupal\anytown\Interfaces;
 
 /**
  * Forecast retrieval API client.

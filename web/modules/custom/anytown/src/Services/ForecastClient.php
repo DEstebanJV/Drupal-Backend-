@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Drupal\anytown;
+namespace Drupal\anytown\Services;
 
+use Drupal\anytown\Interfaces\ForecastClientInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
